@@ -85,6 +85,6 @@ runs:
         if [[ "${EVENTS[@]}" =~ "${PR_EVENT}" ]]; then
           run_pick --is-summary
         # if pr event is closed and merged, IS_SUMMARY is false
-        elif [[ "${PR_EVENT}" == "closed" && "${IS_MERGE}" == "true" ]]; then
+        elif [[ "${PR_EVENT}" == "closed" && "${MERGED}" == "true" ]]; then
           run_pick
         fi
