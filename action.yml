@@ -1,0 +1,90 @@
+name: pick bot
+description: cherry-pick pr bot for github
+
+inputs:
+  config_file:
+    required: false
+    description: 'The definition file defaults to .pick.yml'
+    default: .cherry-pick-path.yml
+  token:
+    required: true
+    description: 'The token defaults to github token'
+    default: ${{ github.token }}
+  version:
+    required: false
+    description: 'Norn version to use'
+    default: '0.1.4'
+
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Check Runner OS
+      if: ${{ runner.os != 'Linux' }}
+      shell: bash
+      run: |
+        echo "::error title=⛔ error hint::Support Linux Only"
+        exit 1
+
+    - name: Download norn
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+      run: |
+        BASE_URL="https://github.com/kentio/norn/releases/download/v${VERSION}"
+        
+        case "${{ runner.arch }}" in
+          "x64")
+            URL="${BASE_URL}/norn-linux-amd64"
+            ;;
+          "arm64")
+            URL="${BASE_URL}/norn-linux-arm64"
+            ;;
+          *)
+            echo "Unsupported architecture: ${{ runner.arch }}"
+            exit 1
+          ;;
+          esac
+          # echo  url
+          echo "Download norn from ${URL}"
+          # download pick tool
+          curl -L -o norn "${URL}"
+          chmod +x norn
+
+    - name: Cherry pick
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+        CONFIG: ${{ inputs.definition_file }}
+        REPO: ${{ github.repository }}
+        BASE_REF: ${{ github.base_ref }}
+        COMMIT_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+        MERGED: ${{ github.event.pull_request.merged }}
+        PR_EVENT: ${{ github.event.action }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+
+        NORN_DEBUG: "on"
+      run: |
+        set -ex
+        ./norn -v
+        
+        function run_pick() {
+          ./norn pick \
+          -p "${CONFIG}" \
+          -v gh \
+          -r "${REPO}" \
+          -s "${COMMIT_SHA}" \
+          --token "${GITHUB_TOKEN}" \
+          --merge-request-id "${PR_NUMBER}" \
+          --for "${BASE_REF}" \
+          "$@"
+        }
+
+        # if pr event event is opened or reopened and edit, IS_SUMMARY is true
+        EVENTS=("opened" "reopened" "edited")
+        if [[ "${EVENTS[@]}" =~ "${PR_EVENT}" ]]; then
+          run_pick --is-summary
+        # if pr event is closed and merged, IS_SUMMARY is false
+        elif [[ "${PR_EVENT}" == "closed" && "${IS_MERGE}" == "true" ]]; then
+          run_pick
+        fi
