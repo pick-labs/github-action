@@ -3,7 +3,7 @@
  Guide to use the pick bot in the GitHub Actions workflow.
 
 > [!IMPORTANT]  
-> Only support the Squash pull request.
+> Only support the **Squash** pull request.
 
 ## Permissions
 
