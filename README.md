@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Pick bot
-        uses: pick-labs/github-action@master
+        uses: pick-labs/github-action@v1
         with:
           token: ${{ secrets.BOT_TOKEN }}  // Your GitHub token
 ```
