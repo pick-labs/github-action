@@ -1,0 +1,24 @@
+name: Pick Bot
+
+on:
+  workflow_dispatch:
+
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - closed
+
+jobs:
+  pick:
+    name: 'Cherry Pick Bot'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pick bot
+        uses: pick-labs/github-action@v1
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
