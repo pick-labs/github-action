@@ -19,4 +19,4 @@ jobs:
       - name: Pick bot
         uses: pick-labs/github-action@v1
         with:
-          token: ${{ secrets.BOT_TOKEN }}  // Your GitHub token
+          token: ${{ secrets.BOT_TOKEN }}
