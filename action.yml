@@ -34,10 +34,10 @@ runs:
         BASE_URL="https://github.com/kentio/norn/releases/download/v${VERSION}"
         
         case "${{ runner.arch }}" in
-          "x64")
+          "X64")
             URL="${BASE_URL}/norn-linux-amd64"
             ;;
-          "arm64")
+          "ARM64")
             URL="${BASE_URL}/norn-linux-arm64"
             ;;
           *)
