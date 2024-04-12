@@ -5,7 +5,7 @@ inputs:
   config_file:
     required: false
     description: 'The definition file defaults to .pick.yml'
-    default: .cherry-pick-path.yml
+    default: .pick.yml
   token:
     required: true
     description: 'The token defaults to github token'
@@ -55,7 +55,7 @@ runs:
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
-        CONFIG: ${{ inputs.definition_file }}
+        CONFIG: ${{ inputs.config_file }}
         REPO: ${{ github.repository }}
         BASE_REF: ${{ github.base_ref }}
         COMMIT_SHA: ${{ github.event.pull_request.merge_commit_sha }}
