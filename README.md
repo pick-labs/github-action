@@ -7,8 +7,8 @@
 Go to create personal access token in the GitHub settings and select the following permissions:
 > Your Avatar > Settings > Developer settings > Personal access tokens > Generate new token
 
--[x] repo 
--[x] admin:org
+- [x] repo 
+- [x] admin:org
 
 ## Usage
 
