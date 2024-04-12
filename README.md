@@ -2,6 +2,14 @@
 
  Guide to use the pick bot in the GitHub Actions workflow.
 
+## Permissions
+
+Go to create personal access token in the GitHub settings and select the following permissions:
+> Your Avatar > Settings > Developer settings > Personal access tokens > Generate new token
+
+-[x] repo 
+-[x] admin:org
+
 ## Usage
 
 1. Create a new file `.github/workflows/pick.yml`
@@ -24,11 +32,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        
       - name: Pick bot
         uses: pick-labs/github-action@v1
         with:
-          token: ${{ secrets.BOT_TOKEN }}  // Your GitHub token
+          # Your GitHub token
+          token: ${{ secrets.BOT_TOKEN }}  
 ```
 2. Create a new file `.pick.yml` in the root of the repository
 
