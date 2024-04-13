@@ -2,6 +2,9 @@
 
  Guide to use the pick bot in the GitHub Actions workflow.
 
+> [!IMPORTANT]  
+> Only support the **Squash** pull request.
+
 ## Permissions
 
 Go to create personal access token in the GitHub settings and select the following permissions:

@@ -33,6 +33,7 @@ runs:
       run: |
         BASE_URL="https://github.com/kentio/norn/releases/download/v${VERSION}"
         
+        # https://docs.github.com/zh/actions/learn-github-actions/contexts#runner-context
         case "${{ runner.arch }}" in
           "X64")
             URL="${BASE_URL}/norn-linux-amd64"
@@ -44,12 +45,12 @@ runs:
             echo "Unsupported architecture: ${{ runner.arch }}"
             exit 1
           ;;
-          esac
-          # echo  url
-          echo "Download norn from ${URL}"
-          # download pick tool
-          curl -L -o norn "${URL}"
-          chmod +x norn
+        esac
+        # echo  url
+        echo "Download norn from ${URL}"
+        # download pick tool
+        curl -L -o norn "${URL}"
+        chmod +x norn
 
     - name: Cherry pick
       shell: bash
