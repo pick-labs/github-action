@@ -22,7 +22,7 @@ jobs:
 
       - name: Download pick
         run: |
-          git branch
+          git branch 
           git branch -a
           ls -lah
           git fetch --all
