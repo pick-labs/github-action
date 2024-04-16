@@ -23,7 +23,7 @@ jobs:
       - name: Download pick
         run:
           git branch
-          ls -lash
+          ls -lah
 
       - name: Pick bot
         uses: pick-labs/github-action@v1
