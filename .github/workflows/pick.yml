@@ -20,13 +20,6 @@ jobs:
         with:
           fetch-depth: 0 # get all history
 
-      - name: Download pick
-        run: |
-          git branch 
-          git branch -a
-          ls -lah
-          git fetch --all
-
       - name: Pick bot
         uses: pick-labs/github-action@v1
         with:
