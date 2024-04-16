@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0 # get all history
 
       - name: Download pick
-        run:
+        run: |
           git branch
           ls -lah
 
