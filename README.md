@@ -36,6 +36,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # get all history
         
       - name: Pick bot
         uses: pick-labs/github-action@v1
