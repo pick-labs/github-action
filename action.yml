@@ -1,5 +1,8 @@
-name: pick bot
-description: cherry-pick pr bot for github
+name: Cherry Pick Bot
+description: Automatically cherry-pick to the specified branch when merging PR.
+branding:
+  icon: 'git-pull-request'
+  color: green
 
 inputs:
   config_file:
