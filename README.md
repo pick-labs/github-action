@@ -4,6 +4,8 @@
 
 > [!IMPORTANT]  
 > Only support the **Squash** pull request.
+>
+> Please use it only for personal projects, as comments created with a personal access token cannot be modified by others.
 
 ## Permissions
 
@@ -48,12 +50,28 @@ jobs:
 2. Create a new file `.pick.yml` in the root of the repository
 
 ```yaml
+# Cherry-pick roadmap configuration file .pick.yml
+# The robot cherry-pick according to the branch order in the file,
+# you can use the `branches` option to specify the branch order.
+# If Pr base branch in the middle of the list, the robot will cherry-pick the Pr to the next branch.
 branches:
   - release/xx
   - release/xx
-  - release/xx
+  - xx
   - vxx/xx
   - master
 ```
 
-The robot cherry-pick according to the branch order in the file.
+Example:
+- rebot will create markdown comment information to tell you the cherry-pick route ([roadmap example](https://github.com/pick-labs/github-action/pull/9#issuecomment-2059291918)), and you can confirm it or cancel cherry-picking for a certain branch.
+- After completion, markdown information will be generated in the PR comments to inform you of the cherry-pick results ([result example](https://github.com/pick-labs/github-action/pull/9#issuecomment-2059292918)).
+
+
+## Options
+
+config_file: `.pick.yml` cherry-pick roadmap configuration file.
+
+| Option      | Required | Description                               | Default   |
+|-------------|----------|-------------------------------------------|-----------|
+| token       | Y        | Personal access token for the GitHub.     |           |
+| config_file | N        | `cherry-pick` roadmap configuration file. | .pick.yml |
