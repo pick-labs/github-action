@@ -4,6 +4,7 @@
 
 > [!IMPORTANT]  
 > Only support the **Squash** pull request.
+
 > Please use it only for personal projects, as comments created with a personal access token cannot be modified by others.
 
 ## Permissions
