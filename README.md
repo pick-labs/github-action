@@ -69,7 +69,7 @@ Example:
 
 ## Options
 
-config_file: `.pick.yml` cherry-pick roadmap configuration file.
+See [action.yml](action.yml) for more detail.
 
 | Option      | Required | Description                               | Default   |
 |-------------|----------|-------------------------------------------|-----------|
