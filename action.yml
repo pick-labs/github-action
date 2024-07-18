@@ -16,7 +16,7 @@ inputs:
   version:
     required: false
     description: 'Norn version to use'
-    default: '0.1.10-alpha'
+    default: '0.1.15-alpha'
 
 
 runs:
