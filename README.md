@@ -66,7 +66,6 @@ Example:
 - rebot will create markdown comment information to tell you the cherry-pick route ([roadmap example](https://github.com/pick-labs/github-action/pull/9#issuecomment-2059291918)), and you can confirm it or cancel cherry-picking for a certain branch.
 - After completion, markdown information will be generated in the PR comments to inform you of the cherry-pick results ([result example](https://github.com/pick-labs/github-action/pull/9#issuecomment-2059292918)).
 
-
 ## Options
 
 See [action.yml](action.yml) for more detail.
